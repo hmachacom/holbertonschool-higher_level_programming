@@ -2,4 +2,5 @@
 str1 = "Holberton"
 str2 = "School"
 # YOUR CODE GOES HERE. PLEASE REMOVE THIS LINE
-print("Welcome to {}!".format(str1 + " " + str2))
+espacio = " "
+print("Welcome to {}!".format(str1 +espacio+str2))
