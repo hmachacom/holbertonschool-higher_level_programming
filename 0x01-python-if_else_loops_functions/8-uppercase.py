@@ -7,4 +7,4 @@ def uppercase(str):
             str2 += chr(ord(charter) - 32)
         else:
             str2 += charter
-    print("{:s}".format(str2))
+    print("{}".format(str2))
