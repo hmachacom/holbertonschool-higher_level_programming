@@ -1,10 +1,10 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 def uppercase(str):
+    str2 = ""
     for charter in str:
         charter2 = ord(charter)
-        if charter2 >= 97 and charter2 <= 122:
-            charter2 = chr(ord(charter) - 32)
+        if charter2 in range(97, 123):
+            str2 += chr(ord(charter) - 32)
         else:
-            charter2 = charter
-        print("{:s}".format(charter2), end="")
-    print("")
+            str2 += charter
+    print("{:s}".format(str2))
