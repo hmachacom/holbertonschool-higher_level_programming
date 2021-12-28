@@ -1,12 +1,9 @@
 #!/usr/bin/python3
 
-from os import lseek
 import sys
+import calculator_1 as calc
 
 if __name__ == "__main__":
-
-    import calculator_1 as calc
-
     long = len(sys.argv)
     operator = ["+", "/", "*", "-"]
     argc = sys.argv
