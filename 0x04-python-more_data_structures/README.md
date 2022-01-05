@@ -1,4 +1,7 @@
 [img]https://i.imgur.com/rgewHiz.png[/img]
+[Imgur](https://imgur.com/rgewHiz)
+https://imgur.com/rgewHizx
+https://imgur.com/rgewHiz
 
 ## 0x04. Python - More Data Structures: Set, Dictionary.
 
