@@ -1,6 +1,6 @@
 ![img]https://imgur.com/rgewHiz[/img]
 
-![Imgur](https://imgur.com/rgewHiz)
+![Logo_Hmachacom](https://i.imgur.com/rgewHiz.png)
 
 
 
