@@ -1,6 +1,6 @@
-[img]https://imgur.com/rgewHiz[/img]
+![img]https://imgur.com/rgewHiz[/img]
 
-[Imgur](https://imgur.com/rgewHiz)
+![Imgur](https://imgur.com/rgewHiz)
 
 
 
@@ -15,3 +15,4 @@ The objective of this project is to learn about the data structures that can be 
 ### Documentation:
 
     [-   [Data structures](https://intranet.hbtn.io/rltoken/XCPKZqM_ZWGW2un62Rg3qw "Data structures")](https://docs.python.org/3/tutorial/datastructures.html)
+![img]https://i.imgur.com/rgewHiz.png[/img]
