@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 class Square:
     pass
+
     def __init__(self, size=0):
         if type(size) == int:
             if size < 0:
