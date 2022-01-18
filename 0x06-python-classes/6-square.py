@@ -51,6 +51,8 @@ class Square:
         """print a square"""
         areas = self.__size
         if areas > 0:
+            for s in range(0, self.position[1]):
+                print()
             for i in range(areas):
                 for m in range(self.__position[0]):
                     print(" ", end="")
