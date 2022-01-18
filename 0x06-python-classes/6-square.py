@@ -56,7 +56,7 @@ class Square:
                     for m in range(self.__position[0]):
                         print(" ", end="")
                 else:
-                    for m in range(self.__position[0]):
+                    for m in range(self.__position[1]):
                         print(" ", end="")
                 for j in range(areas):
                     print("#", end="")
