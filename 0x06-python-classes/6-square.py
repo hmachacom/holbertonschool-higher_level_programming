@@ -52,11 +52,12 @@ class Square:
         areas = self.__size
         if areas > 0:
             for i in range(areas):
-                if not self.__position[1] > 0:
+                if self.__position[1] == 0:
                     for m in range(self.__position[0]):
                         print(" ", end="")
                 else:
-                    print(" ", end="")
+                    for m in range(self.__position[0]):
+                        print(" ", end="")
                 for j in range(areas):
                     print("#", end="")
                 print()
