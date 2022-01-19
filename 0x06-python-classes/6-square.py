@@ -50,7 +50,7 @@ class Square:
 
     def my_print(self):
         """print a square"""
-        areas = self.__size
+        areas = self.__value
         if areas > 0:
             for s in range(0, self.position[1]):
                 print()
