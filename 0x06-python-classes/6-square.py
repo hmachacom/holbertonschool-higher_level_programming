@@ -17,11 +17,11 @@ class Square:
         return self.__size
 
     @size.setter
-    def size(self, value=0):
+    def size(self, size=0):
         """ Validations errors """
-        if type(value) == int:
-            if value >= 0:
-                self.__value = value
+        if type(size) == int:
+            if size >= 0:
+                self.__size = size
             else:
                 raise ValueError("size must be >= 0")
         else:
@@ -50,7 +50,7 @@ class Square:
 
     def my_print(self):
         """print a square"""
-        areas = self.__value
+        areas = self.__size
         if areas > 0:
             for s in range(0, self.position[1]):
                 print()
