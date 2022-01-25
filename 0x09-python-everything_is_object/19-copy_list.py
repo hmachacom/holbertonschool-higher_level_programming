@@ -3,6 +3,4 @@
 
 
 def copy_list(l):
-    """ sdsfdveddsvrsss"""
-    new = l.copy()
-    return new
+    return l.copy()
