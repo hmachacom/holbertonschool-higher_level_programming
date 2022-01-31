@@ -1,0 +1,79 @@
+
+>>> MyList = __import__('1-my_list').MyList
+
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(5)
+
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+
+>>> new_list = MyList()
+>>> new_list.append(1)
+>>> new_list.append(-5)
+>>> new_list.append(-257)
+>>> new_list.append(0)
+>>> new_list.append(-25)
+
+>>> new_list.print_sorted()
+[-257, -25, -5, 0, 1]
+
+>>> new_list = MyList()
+
+>>> new_list.append(None)
+
+>>> print(new_list)
+[None]
+
+>>> new_list.append()
+Traceback (most recent call last):
+...
+TypeError: append() takes exactly one argument (0 given)
+
+>>> new_list = MyList()
+
+>>> print(new_list)
+[]
+
+>>> new_list.append('NaN')
+
+>>> print(new_list)
+['NaN']
+
+>>> new_list = MyList()
+
+>>> new_list.append(["hugo", True, 18])
+>>> new_list.append(0)
+>>> new_list.append(-25)
+
+>>> print(new_list)
+[['hugo', True, 18], 0, -25]
+
+>>> print(isinstance(new_list, MyList))
+True
+
+>>> print(issubclass(MyList, list))
+True
+
+>>> new_list = MyList()
+
+>>> new_list.append("hugo")
+>>> new_list.append(-25)
+
+
+>>> new_list.print_sorted()
+Traceback (most recent call last):
+...
+TypeError: '<' not supported between instances of 'int' and 'str'
+
+>>> print(issubclass(list, MyList))
+False
