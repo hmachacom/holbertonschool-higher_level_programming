@@ -1,24 +1,24 @@
 #!/usr/bin/python3
-"""Pascal triangle module"""
+"""::::::::::::::::::"""
 
 
 def pascal_triangle(n):
-    """Returns a pascal triangle of n size"""
-    pascal = []
+    """:::::::::::::::::::::"""
+    pt = []
     if n <= 0:
-        return pascal
+        return pt
     for i in range(n):
-        pascal2 = []
-        pascal2.append(1)
+        pl = []
+        pl.append(1)
         if i == 0:
-            pascal.append(pascal2)
+            pt.append(pl)
             continue
         for j in range(1, i):
             try:
-                pascal2.append(pascal[i - 1][j - 1] + pt[i - 1][j])
-            except Exception:
+                pl.append(pt[i - 1][j - 1] + pt[i - 1][j])
+            except:
                 continue
-        pascal2.append(1)
-        pascal.append(pascal2)
+        pl.append(1)
+        pt.append(pl)
 
     return pt
