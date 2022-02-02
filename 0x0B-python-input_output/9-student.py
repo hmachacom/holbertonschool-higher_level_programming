@@ -12,7 +12,7 @@ class Student:
 
         Args:
             first_name ([str])
-            last_name ([str]) 
+            last_name ([str])
             age ([int])
         """
         self.first_name = first_name
