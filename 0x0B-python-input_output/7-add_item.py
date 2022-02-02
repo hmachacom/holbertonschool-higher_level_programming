@@ -11,9 +11,9 @@ filename = "add_item.json"
 li = []
 
 try:
-	li = load_from_json_file(filename)
+    li = load_from_json_file(filename)
 except Exception:
     li = []
 for i in sys.argv[1:]:
-	li.append(i)
+    li.append(i)
 save_to_json_file(li, filename)
