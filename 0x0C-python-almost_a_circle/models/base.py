@@ -42,8 +42,9 @@ class Base:
             list_objs ([list])
         """
         save = []
-        for i in list_objs:
-            save.append(i.to_dictionary())
+        if list_objs is not None and len(list_objs) > 0:
+            for i in list_objs:
+                save.append(i.to_dictionary())
         file = cls.__name__ + ".json"
         with open(file, "w") as new_file:
             new_file.write(Base.to_json_string(save))
