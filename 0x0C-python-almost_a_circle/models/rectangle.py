@@ -110,10 +110,9 @@ class Rectangle(Base):
     def display(self):
         """ Print rectangle"""
         if self.__x > 1:
-            for x in range(self.__x):
-                print("")
-        for i in range(self.__height):
-            print(" " * self.__y + "#" * self.__width)
+            print('\n' * self.y, end="")
+        for i in range(self.height):
+            print(' ' * self.x + '#' * self.width)
 
     def __str__(self):
         """Print """
