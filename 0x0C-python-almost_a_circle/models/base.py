@@ -30,7 +30,7 @@ class Base:
             list_dictionaries ([list])
         """
         if not list_dictionaries or list_dictionaries == [None]:
-            return []
+            return "[]"
         return json.dumps(list_dictionaries)
 
     @classmethod
@@ -65,10 +65,12 @@ class Base:
         """that returns an
         instance with all attributes already set
         """
-
-        new_class = cls(1, 1)
-        new_class.update(**dictionary)
-        return new_class
+        if cls.__name__ == 'Rectangle':
+            new_cls = cls(1, 1)
+        elif cls.__name__ == 'Square':
+            new_cls = cls(1)
+        new_cls.update(**dictionary)
+        return new_cls
 
     @classmethod
     def load_from_file(cls):
@@ -77,8 +79,7 @@ class Base:
         try:
             with open(file, "r") as my_file:
                 return [
-                    (cls.create(**i)) for i in
-                    Base.from_json_string(my_file.read())
+                    (cls.create(**i)) for i in Base.from_json_string(my_file.read())
                 ]
         except Exception:
             return []
