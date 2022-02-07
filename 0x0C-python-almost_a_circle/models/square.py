@@ -20,7 +20,7 @@ class Square(Rectangle):
             id ([type], optional): Defaults to None.
         """
         self.size = size
-        super().__init__(size, size, x, y, id)
+        super().__init__(self.size, self.size, x, y, id)
 
     @property
     def size(self):
