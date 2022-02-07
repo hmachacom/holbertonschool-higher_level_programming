@@ -10,10 +10,10 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """[summary]
+        """attribute initialization
 
         Args:
-            id ([int]): [description]. Defaults to None.
+            id ([int]): . Defaults to None.
         """
         if id:
             self.id = id
@@ -23,10 +23,11 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """[summary]
+        """ that returns the JSON string
+        representation of ``list_dictionaries``
 
         Args:
-            list_dictionaries ([type]): [description]
+            list_dictionaries ([list])
         """
         if not list_dictionaries or list_dictionaries == [None]:
             return "[]"
@@ -35,9 +36,10 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """
-
+		returns the JSON
+		string representation of ``list_dictionaries``
         Args:
-            list_objs ([type]): [description]
+            list_objs ([list])
         """
         save = []
         for i in list_objs:
@@ -59,7 +61,8 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """[summary]
+        """that returns an
+        instance with all attributes already set
         """
 
         new_class = cls(1, 1)
@@ -68,7 +71,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """load from file"""
+        """returns a list of instances"""
         file = cls.__name__ + ".json"
         try:
             with open(file, "r") as my_file:
