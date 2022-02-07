@@ -19,13 +19,12 @@ class Square(Rectangle):
             y (int, optional):Defaults to 0.
             id ([type], optional): Defaults to None.
         """
-        self.size = size
-        super().__init__(self.size, self.size, x, y, id)
+        super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
         """size"""
-        return self.__size
+        return self.width
 
     @size.setter
     def size(self, value):
@@ -39,17 +38,13 @@ class Square(Rectangle):
         elif value <= 0:
             raise ValueError("width must be > 0")
         else:
-            self.__size = value
+            self.__width = value
+            self.__height = value
 
     def __str__(self):
         """Print
         """
-        return "[Square] ({}) {}/{} - {}".format(
-            self.id,
-            self.x,
-            self.y,
-            self.size
-            )
+        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.size)
 
     def update(self, *args, **kwargs):
         """[summary]
