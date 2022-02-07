@@ -57,10 +57,29 @@ Your code should use the pycodestyle (version 2.7.*)
 
 |Function           |    Description        |Return     |
 |------------------|----------------------- |-----------|
-|\_\_init__        |attribute initialization| N/A
+|\_\_init__        |Attribute initialization| N/A|
 |to_json_string    | Static method          | that returns the JSON string representation of ``list_dictionaries``|
 |save_to_file|Class method  | that writes the JSON string representation of ``list_objs to a file``|
 |from_json_string|Static method  | that returns the list of the JSON string representation ``json_string``|
 |create|Class method |  that returns an instance with all attributes already set|
 |load_from_file |Class method|returns a list of instances|
 
+#### For rectangle.py
+
+|Function           |    Description        |Return     |
+|------------------|----------------------- |-----------|
+|\_\_init__        |Attribute initialization| N/A       |
+|super().\_\_init__(id)|Attribute initialization the class main|N/A       |
+|width| property |private attributes|
+|width|setter|raise an exception ``if width != int or width <= 0```|
+|height| property |private attributes|
+|height|setter|raise an exception ``if width != int or width <= 0```|
+|x| property |private attributes|
+|x|setter|raise an exception ``if width != int or width <= 0```|
+|y| property |private attributes|
+|y|setter|raise an exception ``if width != int or width <= 0```|
+|area| public method | that returns the area value of the Rectangle instance.|
+|display|public method|that prints in stdout the Rectangle instance with the character #|
+|\_\_str__|public method|method so that it returns ``[Rectangle] (<id>) <x>/<y> - <width>/<height>``
+|update|public method|that assigns a key/value argument to attributes|
+|to_dictionary|public method|that returns the dictionary representation of a ``Rectangle``|
