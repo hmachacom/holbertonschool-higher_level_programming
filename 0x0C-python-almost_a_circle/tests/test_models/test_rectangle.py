@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Unittest for max_integer([..])
+"""Unittest for class Rectangle
 """
 import unittest
 from models.rectangle import Rectangle
@@ -10,7 +10,7 @@ r3 = Rectangle(10, 2, 0, 0, 12)
 
 class Test_Rectangle(unittest.TestCase):
     """
-    class unittest for Base
+    class unittest for Rectangle
     """
 
     """Value Exceptions"""
@@ -165,13 +165,19 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(r5.__str__(), "[Rectangle] (9) 8/7 - 1/2")
 
     """=========================================================="""
-    """Check the methode str"""
+    """Check the methode dictionary"""
 
     def test_methode_to_dictionary(self):
         """Check the value to_dictionary"""
         r5 = Rectangle(1, 2, 8, 7)
         self.assertEqual(
-            r5.to_dictionary(), {"width": 1, "height": 2, "x": 8, "y": 7, "id": 10}
+            r5.to_dictionary(), {
+                "width": 1,
+                "height": 2,
+                "x": 8,
+                "y": 7,
+                "id": 10
+                }
         )
 
     """=========================================================="""
