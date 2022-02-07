@@ -30,7 +30,7 @@ class Base:
             list_dictionaries ([list])
         """
         if not list_dictionaries or list_dictionaries == [None]:
-            return "[]"
+            return []
         return json.dumps(list_dictionaries)
 
     @classmethod
