@@ -57,7 +57,7 @@ class Base:
             list_objs ([type]): [description]
         """
         if json_string is None or json_string == "":
-            return "[]"
+            return []
         return json.loads(json_string)
 
     @classmethod
