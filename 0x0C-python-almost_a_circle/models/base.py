@@ -2,6 +2,9 @@
 """ Class base"""
 import json
 import csv
+import turtle as tortuga
+import time
+from random import randint as col
 
 
 class Base:
@@ -80,8 +83,8 @@ class Base:
         try:
             with open(file, "r") as my_file:
                 return [
-                    (cls.create(**i)) for i in
-                    Base.from_json_string(my_file.read())
+                    (cls.create(**i)) for i
+                    in Base.from_json_string(my_file.read())
                 ]
         except Exception:
             return []
@@ -119,3 +122,48 @@ class Base:
                 return [cls.create(**dict_l) for dict_l in dict_ni]
         except Exception:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        hat opens a window and draws all the
+        Rectangles and Squares
+        """
+        tortuga.setup(640, 480, None, None)
+        tortuga.title("Geometric")
+        tortuga.screensize(100, 100)
+        tortuga.hideturtle()
+        tortuga.colormode(255)
+
+        for i in list_rectangles:
+            tortuga.fillcolor(col(0, 255), col(0, 255), col(0, 255))
+            tortuga.begin_fill()
+            tortuga.pencolor(col(0, 255), col(0, 255), col(0, 255))
+            tortuga.pensize(3)
+            tortuga.up()
+            tortuga.setposition(i.x, i.y)
+            tortuga.down()
+            tortuga.forward(i.width)
+            tortuga.left(90)
+            tortuga.forward(i.height)
+            tortuga.left(90)
+            tortuga.forward(i.width)
+            tortuga.left(90)
+            tortuga.forward(i.height)
+            tortuga.end_fill()
+            time.sleep(2)
+            tortuga.clear()
+        for i in list_squares:
+            tortuga.pensize(5)
+            tortuga.up()
+            tortuga.setposition(i.x, i.y)
+            tortuga.down()
+            tortuga.pencolor(col(0, 255), col(0, 255), col(0, 255))
+            for m in range(4):
+                tortuga.forward(i.size)
+                tortuga.left(90)
+            time.sleep(2)
+            tortuga.clear()
+        tortuga.onkeypress(tortuga.bye, "q")
+        tortuga.listen()
+        tortuga.done()
