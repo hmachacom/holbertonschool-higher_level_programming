@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Class base"""
 import json
+import csv
 
 
 class Base:
@@ -82,5 +83,45 @@ class Base:
                     (cls.create(**i)) for i in
                     Base.from_json_string(my_file.read())
                 ]
+        except Exception:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """csv"""
+        save = []
+        if list_objs is not None and len(list_objs) > 0:
+            save = [(i.to_dictionary()) for i in list_objs]
+        with open(cls.__name__ + ".csv", "w") as my_file:
+            writer = csv.writer(my_file)
+            for i in save:
+                for key, value in i.items():
+                    writer.writerow([key, value])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Load csv"""
+        if cls.__name__ == "Rectangle":
+            var_ctr = 5
+        elif cls.__name__ == "Square":
+            var_ctr = 4
+        else:
+            var_ctr = 1
+        try:
+            with open(cls.__name__ + ".csv", mode='r') as f:
+                reader = csv.reader(f)
+                i = 1
+                list_dir = []
+                dict_from_csv = {}
+                for rows in reader:
+                    if i <= var_ctr:
+                        dict_from_csv[rows[0]] = int(rows[1])
+                        i += 1
+                    else:
+                        list_dir.append(dict_from_csv.copy())
+                        dict_from_csv[rows[0]] = int(rows[1])
+                        i = 1
+                list_dir.append(dict_from_csv.copy())
+                return [cls.create(**i) for i in list_dir]
         except Exception:
             return []
