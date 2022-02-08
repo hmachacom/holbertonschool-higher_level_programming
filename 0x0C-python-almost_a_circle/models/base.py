@@ -66,9 +66,9 @@ class Base:
         """that returns an
         instance with all attributes already set
         """
-        if cls.__name__ == 'Rectangle':
+        if cls.__name__ == "Rectangle":
             new_cls = cls(1, 1)
-        elif cls.__name__ == 'Square':
+        elif cls.__name__ == "Square":
             new_cls = cls(1)
         new_cls.update(**dictionary)
         return new_cls
@@ -80,48 +80,41 @@ class Base:
         try:
             with open(file, "r") as my_file:
                 return [
-                    (cls.create(**i)) for i in
-                    Base.from_json_string(my_file.read())
+                    (cls.create(**i)) for i in Base.from_json_string(my_file.read())
                 ]
         except Exception:
             return []
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """csv"""
-        save = []
-        if list_objs is not None and len(list_objs) > 0:
-            save = [(i.to_dictionary()) for i in list_objs]
+        """create file .csv"""
+        line = []
         with open(cls.__name__ + ".csv", "w") as my_file:
-            writer = csv.writer(my_file)
-            for i in save:
-                for key, value in i.items():
-                    writer.writerow([key, value])
+            if list_objs is None or len(list_objs) <= 0:
+                my_file.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    line = ["id", "width", "height", "x", "y"]
+                if cls.__name__ == "Square":
+                    line = ["id", "size", "x", "y"]
+            var = csv.DictWriter(my_file, fieldnames=line)
+            for iter in list_objs:
+                var.writerow(iter.to_dictionary())
 
     @classmethod
     def load_from_file_csv(cls):
-        """Load csv"""
-        if cls.__name__ == "Rectangle":
-            var_ctr = 5
-        elif cls.__name__ == "Square":
-            var_ctr = 4
-        else:
-            var_ctr = 1
+        """read the function"""
         try:
-            with open(cls.__name__ + ".csv", mode='r') as f:
-                reader = csv.reader(f)
-                i = 1
-                list_dir = []
-                dict_from_csv = {}
-                for rows in reader:
-                    if i <= var_ctr:
-                        dict_from_csv[rows[0]] = int(rows[1])
-                        i += 1
-                    else:
-                        list_dir.append(dict_from_csv.copy())
-                        dict_from_csv[rows[0]] = int(rows[1])
-                        i = 1
-                list_dir.append(dict_from_csv.copy())
-                return [cls.create(**i) for i in list_dir]
+            with open(cls.__name__ + ".csv", "r") as my_file:
+                if cls.__name__ == "Rectangle":
+                    line = ["id", "width", "height", "x", "y"]
+                if cls.__name__ == "Square":
+                    line = ["id", "size", "x", "y"]
+                read_file = csv.DictReader(my_file, fieldnames=line)
+                dict_ni = [
+                    dict([clave, int(valor)] for clave, valor in iter.items())
+                    for iter in read_file
+                ]
+                return [cls.create(**dict_l) for dict_l in dict_ni]
         except Exception:
             return []
