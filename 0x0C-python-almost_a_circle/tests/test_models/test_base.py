@@ -9,7 +9,7 @@ import os
 
 
 class BaseTest(unittest.TestCase):
-    """class"""
+    """test class Base"""
 
     def setUp(self):
         Base._Base__nb_objects = 0
@@ -59,18 +59,18 @@ class BaseTest(unittest.TestCase):
 
     def test_to_json_string_Rec(self):
         rec = Rectangle(5, 3, 1, 5, 15)
-        diccionario = [rec.to_dictionary()]
-        self.assertTrue(len(Base.to_json_string(diccionario)) == 53)
+        dict = [rec.to_dictionary()]
+        self.assertTrue(len(Base.to_json_string(dict)) == 53)
 
     def test_to_json_string_Squ(self):
-        cuadrado = Square(5, 1, 5, 15)
-        diccionario = [cuadrado.to_dictionary()]
-        self.assertTrue(len(Base.to_json_string(diccionario)) == 39)
+        square = Square(5, 1, 5, 15)
+        dict = [square.to_dictionary()]
+        self.assertTrue(len(Base.to_json_string(dict)) == 39)
 
     def test_to_json_string(self):
-        dicci = {"x": 5, "width": 20, "height": 16, "y": 5, "id": 1}
-        json = Base.to_json_string([dicci])
-        self.assertTrue(isinstance(dicci, dict))
+        new_dict = {"x": 5, "width": 20, "height": 16, "y": 5, "id": 1}
+        json = Base.to_json_string([new_dict])
+        self.assertTrue(isinstance(new_dict, dict))
         self.assertTrue(isinstance(json, str))
         self.assertCountEqual
         (json, '[{"x": 5, "width": 20, "height": 16, "y": 5, "id": 1}]')
@@ -81,14 +81,14 @@ class BaseTest(unittest.TestCase):
         json2 = Base.to_json_string(None)
         self.assertEqual(json2, "[]")
 
-    def test_to_json_string_DosDicci(self):
+    def test_to_json_string_2Dic(self):
         cua = Square(5, 1, 5, 15)
         rec = Rectangle(5, 3, 1, 5, 15)
-        diccionario = [cua.to_dictionary(), rec.to_dictionary()]
-        self.assertTrue(len(Base.to_json_string(diccionario)) == 92)
+        dict = [cua.to_dictionary(), rec.to_dictionary()]
+        self.assertTrue(len(Base.to_json_string(dict)) == 92)
 
     def test_to_json_types(self):
-
+        """test for to json string"""
         with self.assertRaises(TypeError):
             Base.to_json_string()
 

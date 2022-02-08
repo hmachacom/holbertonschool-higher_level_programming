@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""Archivo que verifica los posibles casos
-de error del archivo rectangle."""
+"""test for class rectangle"""
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
@@ -8,7 +7,7 @@ import unittest
 
 
 class TestRectangle(unittest.TestCase):
-    """Todos los posibles errores"""
+    """check error"""
 
     r3 = Rectangle(10, 2, 0, 0, 12)
 
@@ -23,7 +22,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(Rectangle(10, 2, 4, 5, 15).id, 15)
         self.assertEqual(Rectangle(10, 2, 4, 5, -15).id, -15)
 
-    def test_dimension(self):
+    def test_proporcion(self):
         dim = Rectangle(2, 10)
         self.assertEqual(dim.width, 2)
         self.assertEqual(dim.height, 10)
@@ -47,6 +46,12 @@ class TestRectangle(unittest.TestCase):
         """Check Value error in height no int
             """
         self.assertRaises(TypeError, Rectangle, 2, "straus")
+
+    def test_raise_zero(self):
+        """Check Value error in height no int
+            """
+        self.assertRaises(ValueError, Rectangle, 0, 1)
+        self.assertRaises(ValueError, Rectangle, 2, 0)
 
     def test_raise_x_negative(self):
         """Check Value error in x
@@ -216,6 +221,11 @@ class TestRectangle(unittest.TestCase):
         """call the methode without parametres"""
         self.assertRaises(TypeError, r5.to_json_string)
         self.assertEqual(r5.to_json_string(("straus", "migo")), '["straus", "migo"]')
+
+    def test_save_to_file(self):
+        """test for save_to_file"""
+        self.assertEqual(Rectangle.save_to_file([]), None)
+
 
 
 if __name__ == "__main__":
