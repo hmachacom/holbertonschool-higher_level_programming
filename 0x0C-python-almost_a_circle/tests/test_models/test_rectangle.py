@@ -1,19 +1,32 @@
 #!/usr/bin/python3
-"""Unittest for class Rectangle
-"""
-import unittest
+"""Archivo que verifica los posibles casos
+de error del archivo rectangle."""
+from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
+import unittest
 
 
-r3 = Rectangle(10, 2, 0, 0, 12)
+class TestRectangle(unittest.TestCase):
+    """Todos los posibles errores"""
 
+    r3 = Rectangle(10, 2, 0, 0, 12)
 
-class Test_Rectangle(unittest.TestCase):
-    """
-    class unittest for Rectangle
-    """
+    def setUp(self):
+        Base._Base__nb_objects = 0
 
-    """Value Exceptions"""
+    def testId(self):
+        self.assertEqual(Rectangle(1, 2).id, 1)
+        self.assertEqual(Rectangle(2, 3).id, 2)
+        self.assertEqual(Rectangle(3, 4).id, 3)
+        self.assertEqual(Rectangle(10, 2, 0, 0, 12).id, 12)
+        self.assertEqual(Rectangle(10, 2, 4, 5, 15).id, 15)
+        self.assertEqual(Rectangle(10, 2, 4, 5, -15).id, -15)
+
+    def test_dimension(self):
+        dim = Rectangle(2, 10)
+        self.assertEqual(dim.width, 2)
+        self.assertEqual(dim.height, 10)
 
     def test_raise_height_negative(self):
         """Check Value error in height
@@ -33,7 +46,7 @@ class Test_Rectangle(unittest.TestCase):
     def test_raise_height_no_int(self):
         """Check Value error in height no int
             """
-        self.assertRaises(TypeError, Rectangle, 2, "hugo")
+        self.assertRaises(TypeError, Rectangle, 2, "straus")
 
     def test_raise_x_negative(self):
         """Check Value error in x
@@ -48,12 +61,12 @@ class Test_Rectangle(unittest.TestCase):
     def test_raise_y_no_int(self):
         """Check Value error in y no int
             """
-        self.assertRaises(TypeError, Rectangle, 4, 8, 8, "Hugo")
+        self.assertRaises(TypeError, Rectangle, 4, 8, 8, "straus")
 
     def test_raise_x_no_int(self):
         """Check Value error in x no int
             """
-        self.assertRaises(TypeError, Rectangle, 2, 2, "hugo")
+        self.assertRaises(TypeError, Rectangle, 2, 2, "straus")
 
     """=========================================================="""
 
@@ -70,7 +83,7 @@ class Test_Rectangle(unittest.TestCase):
         """
         Check return function
         """
-        r2 = Rectangle(2, 10)
+        r2 = Rectangle(1, 1, 2, 10, 5)
         self.assertEqual(r2.id, 5)
 
     def test_id3n(self):
@@ -161,23 +174,17 @@ class Test_Rectangle(unittest.TestCase):
 
     def test_methode_str(self):
         """Check the value str"""
-        r5 = Rectangle(1, 2, 8, 7)
+        r5 = Rectangle(1, 2, 8, 7, 9)
         self.assertEqual(r5.__str__(), "[Rectangle] (9) 8/7 - 1/2")
 
     """=========================================================="""
-    """Check the methode dictionary"""
+    """Check the methode str"""
 
     def test_methode_to_dictionary(self):
         """Check the value to_dictionary"""
-        r5 = Rectangle(1, 2, 8, 7)
+        r5 = Rectangle(1, 2, 8, 7, 10)
         self.assertEqual(
-            r5.to_dictionary(), {
-                "width": 1,
-                "height": 2,
-                "x": 8,
-                "y": 7,
-                "id": 10
-                }
+            r5.to_dictionary(), {"width": 1, "height": 2, "x": 8, "y": 7, "id": 10}
         )
 
     """=========================================================="""
@@ -185,15 +192,15 @@ class Test_Rectangle(unittest.TestCase):
 
     def test_methode_update_args(self):
         """Check the value update"""
-        r5 = Rectangle(1, 2, 8, 7)
-        r5.update(16, 25)
-        self.assertEqual(r5.__str__(), "[Rectangle] (16) 8/7 - 25/2")
+        r5 = Rectangle(1, 2, 8, 7, 99)
+        r5.update(80, 1, 1, 1, 96)
+        self.assertEqual(r5.__str__(), "[Rectangle] (80) 1/96 - 1/1")
 
     def test_methode_update_kwargs(self):
         """Check the value update"""
-        r5 = Rectangle(1, 2, 8, 7)
-        r5.update(width=16, x=4)
-        self.assertEqual(r5.__str__(), "[Rectangle] (12) 4/7 - 16/2")
+        r6 = Rectangle(1, 2, 8, 7, 12)
+        r6.update(width=16, x=4)
+        self.assertEqual(r6.__str__(), "[Rectangle] (12) 4/7 - 16/2")
 
     """=========================================================="""
     """Check the methode to_json_string"""
@@ -208,9 +215,7 @@ class Test_Rectangle(unittest.TestCase):
         )
         """call the methode without parametres"""
         self.assertRaises(TypeError, r5.to_json_string)
-        self.assertEqual(
-            r5.to_json_string(("hugo", "machacon")), '["hugo", "machacon"]'
-        )
+        self.assertEqual(r5.to_json_string(("straus", "migo")), '["straus", "migo"]')
 
 
 if __name__ == "__main__":

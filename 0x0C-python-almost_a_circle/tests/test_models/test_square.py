@@ -1,60 +1,52 @@
 #!/usr/bin/python3
-"""Unittest for class square
-"""
-import unittest
+"""Archivo que verifica los posibles casos
+de error del archivo square."""
+from models.rectangle import Rectangle
+from models.base import Base
 from models.square import Square
+import unittest
 
 
-class Test_Rectangle(unittest.TestCase):
-    """
-    class unittest for Square
-    """
+class testSquare(unittest.TestCase):
+    """Todas las funciones posibles"""
 
-    """Value Exceptions"""
+    def setUp(self):
+        Base._Base__nb_objects = 0
 
     def test_raise_height_negative(self):
-        """Check Value error in height
-        """
         self.assertRaises(ValueError, Square, 8, -1)
 
     def test_raise_width_negative(self):
-        """Check Value error in width negative
-        """
         self.assertRaises(ValueError, Square, -2, 8)
 
     def test_raise_width_no_int(self):
-        """Check Value error in width no int
-            """
-        self.assertRaises(TypeError, Square, "-2", 8)
+        self.assertRaises(TypeError, Square, "-9", 8)
 
     def test_raise_height_no_int(self):
-        """Check Value error in height no int
-            """
-        self.assertRaises(TypeError, Square, 2, "hugo")
+        self.assertRaises(TypeError, Square, 2, "misterios")
 
     def test_raise_x_negative(self):
-        """Check Value error in x
-        """
         self.assertRaises(ValueError, Square, 8, 2, -2)
 
     def test_raise_y_negative(self):
-        """Check Value error in y negative
-        """
         self.assertRaises(ValueError, Square, 2, 8, -1)
 
     def test_raise_y_no_int(self):
-        """Check Value error in y no int
-            """
-        self.assertRaises(TypeError, Square, 4, 8, "Hugo")
+        self.assertRaises(TypeError, Square, 4, 8, "misterios")
 
     def test_raise_x_no_int(self):
-        """Check Value error in x no int
-            """
-        self.assertRaises(TypeError, Square, 2, 2, "hugo")
+        self.assertRaises(TypeError, Square, 2, 2, "misterios")
+
+    def test_sinexepcion(self):
+        """Test Square class: check for missing args."""
+        with self.assertRaises(TypeError) as x:
+            s1 = Square()
+        self.assertEqual(
+            "__init__() missing 1 required positional argument: 'size'",
+            str(x.exception),
+        )
 
     """=========================================================="""
-
-    """Check the value id"""
 
     def test_id1n(self):
         """
@@ -67,7 +59,7 @@ class Test_Rectangle(unittest.TestCase):
         """
         Check return function
         """
-        r2 = Square(2, 10)
+        r2 = Square(2, 10, 5, 45)
         self.assertEqual(r2.id, 45)
 
     def test_id3n(self):
@@ -125,6 +117,13 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(Square(78, 9, 89, 17).y, 89)
         self.assertEqual(Square(5, 6, 4, 9).y, 4)
 
+    def test_atribute_size(self):
+        """Test Square class: check for size attribute."""
+        s1 = Square(8)
+        self.assertEqual(s1.size, 8)
+        s2 = Square(9, 8, 7, 2)
+        self.assertEqual(s2.size, 9)
+
     """=========================================================="""
     """Check the value is instance"""
 
@@ -132,6 +131,11 @@ class Test_Rectangle(unittest.TestCase):
         """Check print"""
         r4 = Square(10, 2, 0, 12)
         self.assertIsInstance(r4, Square)
+        self.assertTrue(issubclass(Square, Rectangle))
+        self.assertFalse(isinstance(Square, Rectangle))
+        self.assertTrue(isinstance(r4, Base))
+        self.assertTrue(issubclass(Square, Base))
+        self.assertFalse(isinstance(Square, Base))
 
     """=========================================================="""
     """Check the methode area"""
@@ -159,12 +163,7 @@ class Test_Rectangle(unittest.TestCase):
     def test_methode_to_dictionary(self):
         """Check the value to_dictionary"""
         r5 = Square(1, 2, 8, 7)
-        self.assertEqual(r5.to_dictionary(), {
-            "size": 1,
-            "x": 2,
-            "y": 8,
-            "id": 7}
-                        )
+        self.assertEqual(r5.to_dictionary(), {"size": 1, "x": 2, "y": 8, "id": 7})
 
     """=========================================================="""
     """Check the methode update"""
@@ -181,6 +180,13 @@ class Test_Rectangle(unittest.TestCase):
         r5.update(size=16, x=4)
         self.assertEqual(r5.__str__(), "[Square] (7) 4/8 - 16")
 
+    def test_update_error(self):
+        """Test for update method on Square with wrong types."""
+        s1 = Square(9)
+        with self.assertRaises(TypeError) as x:
+            s1.update(2, 3, 4, "hello")
+        self.assertEqual("y must be an integer", str(x.exception))
+
     """=========================================================="""
     """Check the methode to_json_string"""
 
@@ -194,5 +200,5 @@ class Test_Rectangle(unittest.TestCase):
         """call the methode without parametres"""
         self.assertRaises(TypeError, r5.to_json_string)
         self.assertEqual(
-            r5.to_json_string(("hugo", "machacon")), '["hugo", "machacon"]'
+            r5.to_json_string(("misterios", "spirit")), '["misterios", "spirit"]'
         )
