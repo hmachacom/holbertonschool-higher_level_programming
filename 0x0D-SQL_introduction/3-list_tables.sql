@@ -1,0 +1,2 @@
+-- dysplay tables
+SHOW TABLES;
