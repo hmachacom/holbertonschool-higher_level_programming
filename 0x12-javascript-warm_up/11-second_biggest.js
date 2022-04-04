@@ -3,10 +3,12 @@
 const { argv } = require('process');
 
 // print process.argv
-if (!argv[2] || argv.length === 3) {
+let newAr = [];
+if (argv.length <= 3) {
   console.log(0);
 } else {
-  const newAr = argv.slice(2).sort();
+  newAr = argv.slice(2).map(Number).sort();
+
   newAr.pop();
-  console.log(parseInt(newAr[newAr.length - 1]));
+  console.log(newAr.pop());
 }
