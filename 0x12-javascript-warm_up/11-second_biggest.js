@@ -2,7 +2,6 @@
 
 const { argv } = require('process');
 
-// print process.argv
 let newAr = [];
 if (argv.length <= 3) {
   console.log(0);
