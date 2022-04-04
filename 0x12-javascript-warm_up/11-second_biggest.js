@@ -8,5 +8,5 @@ if (!argv[2] || argv.length === 3) {
 } else {
   const newAr = argv.slice(2).sort();
   newAr.pop();
-  console.log(newAr[newAr.length - 1]);
+  console.log(parseInt(newAr[newAr.length - 1]));
 }
