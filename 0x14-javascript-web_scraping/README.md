@@ -1,7 +1,7 @@
 # 0x14. JavaScript - Web scraping
 
 <p align="center">
-  <img src="descarga.png">
+  <img src=".descarga.png">
 </p>
 
 > ## General
