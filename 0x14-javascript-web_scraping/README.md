@@ -1,9 +1,8 @@
 # 0x14. JavaScript - Web scraping
-<div>
-	<p style = 'text-align:center;'>
-		![web scraping](./descarga.png)
-	</p>
-</div>
+
+<p align="center">
+  <img src="descarga.png">
+</p>
 
 > ## General
 
