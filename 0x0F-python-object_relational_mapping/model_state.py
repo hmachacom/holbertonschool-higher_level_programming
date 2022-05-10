@@ -7,11 +7,11 @@ Base = declarative_base()
 
 
 class State(Base):
-	"""Class states model
+    """Class states model
 
-	Args:
-		Base (_type_): inherit 
-	"""
+    Args:
+        Base (_type_): inherit
+    """
     __tablename__ = "states"
     id = Column(Integer, autoincrement=True, nullable=False, primary_key=True)
     name = Column(String(100), nullable=False)
