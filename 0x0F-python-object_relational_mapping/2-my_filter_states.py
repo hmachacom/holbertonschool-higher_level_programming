@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Get all states"""
-
 if __name__ == "__main__":
     import MySQLdb
     from sys import argv
@@ -12,6 +11,7 @@ if __name__ == "__main__":
     cur.execute("SELECT * FROM states ORDER BY id ASC")
 
     for states in cur.fetchall():
-        print(states)
+        if states[1] == argv[4]:
+            print(states)
     cur.close()
     db.close()
