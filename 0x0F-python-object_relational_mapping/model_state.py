@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""First state model
-"""
+"""First state model"""
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -14,5 +13,5 @@ class State(Base):
 		Base (_type_): inherit 
 	"""
     __tablename__ = "states"
-    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
-    name = Column(String(128), nullable=False)
+    id = Column(Integer, autoincrement=True, nullable=False, primary_key=True)
+    name = Column(String(100), nullable=False)
