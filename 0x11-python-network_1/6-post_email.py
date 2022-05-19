@@ -3,14 +3,8 @@
 in a URL, sends a request to the URL and displays the value of the
 ` X-Request-Id `   variable found in the header of the response."""
 
-if __name__ == "__main__":
-    from urllib import request
-    import sys
+import requests
+import sys
 
 if __name__ == "__main__":
-    import urllib.request
-    import sys
-
-    with request.urlopen(sys.argv[1]) as response:
-        head = response.headers.get('X-Request-Id')
-        print(head)
+    print(requests.post(sys.argv[1], data={'email': sys.argv[2]}).text)
